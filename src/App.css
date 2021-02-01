@@ -1,0 +1,17 @@
+.App{
+  color:#263238;
+  font-size:18px;
+  width:100vw;
+  overflow-x:hidden;
+  position:relative;
+}
+.App input{
+  outline:none;
+}
+.bg-primary{
+  background:#0C56E9;
+  color:#fff;
+}
+.bg-primary-7{
+  background:#F0F5FF;
+}
