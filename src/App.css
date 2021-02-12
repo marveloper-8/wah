@@ -1,7 +1,6 @@
 .App{
   color:#263238;
   font-size:18px;
-  width:100vw;
   overflow-x:hidden!important;
   position:relative;
 }
@@ -16,9 +15,12 @@ h1{
   font-size:64px;
 }
 h2{
-  font-size:40px;
+  font-size:48px;
 }
 h3{
+  font-size:40px;
+}
+h4{
   font-size:32px;
 }
 h5{

@@ -79,7 +79,7 @@
 .home .how-it-works .title{
     text-align:center;
 }
-.home .how-it-works .title h2{
+.home .how-it-works .title h3{
     margin:0;
 }
 .home .how-it-works .title .underline{
@@ -112,6 +112,31 @@
     color:#364B63;
 }
 /* end how it works */
+
+/* info */
+.home .info{
+    padding-bottom:74px;
+    text-align:center;
+}
+.home .info img{
+    width: 100%;
+    margin-bottom:45px;
+}
+.home .info h2{
+    padding:0 223px;
+    margin:0 0 24px 0;
+}
+.home .info p{
+    padding:0 445px;
+}
+/* end info */
+
+/* vendor */
+.home .become-a-vendor{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+/* end vendor */
 
 /* break */
 /* break */

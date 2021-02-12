@@ -67,7 +67,6 @@ const how_it_works = [
 
 function Home() {
     const [menu_container, openMenu] = useState(false)
-    const [search_input, openSearch] = useState(false)
     return (
         <div className="home">
             <div className="header" style={{
@@ -134,11 +133,12 @@ function Home() {
                     text="View Marketplace"
                     type="submit"
                     styling="bg-white"
+                    arrow="black"
                 />
             </div>
 
             <div className="category">
-                <h3>Shop by category</h3>
+                <h4>Shop by category</h4>
 
                 <div className="list">
                     {categories.map(item => {
@@ -155,7 +155,7 @@ function Home() {
 
             <div className="how-it-works">
                 <div className="title">
-                    <h2>How it works</h2>
+                    <h3>How it works</h3>
                     <div className="underline"></div>
                 </div>
                 
@@ -172,6 +172,23 @@ function Home() {
 
             <div className="info">
                 <img src={drinking} alt="drinking" />
+                <h2>We believe water should be accessible to everyone no matter where they are</h2>
+                <p>By creating a platform whereby water vendors can be connected to customers we are achieving that</p>
+            </div>
+
+            <div className="become-a-vendor">
+                <div className="image"></div>
+
+                <div className="text">
+                    <h2>We believe water should be accessible to everyone no matter where they are</h2>
+                    <p>By creating a platform whereby water vendors can be connected to customers we are achieving that</p>
+                    <ButtonArrow
+                        text="View Marketplace"
+                        type="submit"
+                        styling="bg-white"
+                        arrow="white"
+                    />
+                </div>
             </div>
             
         </div>
