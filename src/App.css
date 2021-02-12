@@ -2,11 +2,31 @@
   color:#263238;
   font-size:18px;
   width:100vw;
-  overflow-x:hidden;
+  overflow-x:hidden!important;
   position:relative;
+}
+*{
+  /* overflow-x:hidden; */
 }
 .App input{
   outline:none;
+}
+
+h1{
+  font-size:64px;
+}
+h2{
+  font-size:40px;
+}
+h3{
+  font-size:32px;
+}
+h5{
+  font-size:24px;
+}
+
+.bg-white{
+  background:#fff;
 }
 .bg-primary{
   background:#0C56E9;

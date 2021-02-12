@@ -36,9 +36,9 @@ const Navigation = () => {
             </div>
 
             <div className="navigation nav-mobile">
-                <div className="menu">
-                    <span onClick={() => openMenu(true)}>
-                        <img src={menu} alt="menu" />
+                <div className="search">
+                    <span onClick={() => openSearch(true)}>
+                        <img src={search} alt="search" />
                     </span>
                 </div>
 
@@ -46,9 +46,9 @@ const Navigation = () => {
                     <img src={logo} alt="logo" />
                 </div>
 
-                <div className="search">
-                    <span onClick={() => openSearch(true)}>
-                        <img src={search} alt="search" />
+                <div className="menu">
+                    <span onClick={() => openMenu(true)}>
+                        <img src={menu} alt="menu" />
                     </span>
                 </div>
             </div>

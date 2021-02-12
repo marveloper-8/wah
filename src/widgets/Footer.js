@@ -2,7 +2,7 @@ import React from 'react'
 // styles
 import './style/footer.css'
 // widgets
-import Button from './Button'
+import ButtonFooter from './ButtonFooter'
 // icons
 import logo from '../icons/logo.svg'
 import linkedin from '../icons/linkedin.svg'
@@ -70,7 +70,7 @@ function Footer() {
                     <div className="label">Subscribe for updates</div>
                     <div className="input">
                         <input type="email" placeholder='Your e-mail' />
-                        <Button
+                        <ButtonFooter
                             text="Subscribe"
                             type="submit"
                             styling="bg-primary"

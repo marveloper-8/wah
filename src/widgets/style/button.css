@@ -1,5 +1,17 @@
-button{
+.button-footer{
     padding:12px 24px;
     border-radius:4px;
     border:none;
+}
+
+button{
+    padding:18px 24px;
+    border-radius:4px;
+    border:none;
+    cursor:pointer;
+}
+
+button img{
+    width:38px;
+    margin-left:36px;
 }

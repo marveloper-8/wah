@@ -1,4 +1,200 @@
-.header{
+.home{
+    background:none;
+    overflow-x:hidden!important;
+}
+
+/* header */
+.home .header{
     background:#1b314b5e;
-    padding:24px 78px 130px 78px;
+    padding:24px 70px 130px 70px;
+    color:#fff;
+}
+.home .header .navigation-home{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+.home .header .navigation-home .logo{
+    text-align:left;
+}
+.home .header .navigation-home .logo img{
+    width:200px;
+    float:left;
+}
+.home .header .navigation-home .extras{
+    text-align:right;
+    padding:7.5px 0 0 0;
+}
+.home .header .navigation-home .extras .market{
+    margin-right:24px;
+    font-size:16px;
+}
+.home .header .navigation-home .extras img{
+    margin-left:40px;
+    height:15px;
+}
+.home .header h1{
+    padding-right:752px;
+    margin:105px 0 24px 0;
+}
+.home .header p{
+    padding-right:880px;
+    margin-bottom:50px;
+}
+
+.home .header .nav-mobile{
+    display:none;
+}
+/* end of header */
+
+/* category */
+.home .category{
+    padding:65px 70px;
+    margin-bottom:62px;
+}
+.home .category .list{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    margin:32px 0 0 0;
+    padding-bottom:50px;
+}
+.home .category .list .item{
+    width:85%;
+    box-shadow: 0px 10px 35px rgba(2, 23, 64, 0.08);
+    border-radius: 4px;
+}
+.home .category .list .item .background{
+    height:300px;
+}
+.home .category .list .item .text{
+    text-align:center;
+    padding:24px 0;
+
+}
+/* end of category */
+
+/* how it works */
+.home .how-it-works{
+    padding:0 36px 97px 36px;
+}
+.home .how-it-works .title{
+    text-align:center;
+}
+.home .how-it-works .title h2{
+    margin:0;
+}
+.home .how-it-works .title .underline{
+    background:#B9D0FD;
+    height:19px;
+    width:295px;
+    display:inline-block;
+    position:relative;
+    bottom:20px;
+    z-index:-1;
+}
+
+.home .how-it-works .list{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    margin-top:60px;
+}
+.home .how-it-works .list .item{
+    padding:0 49.5px;
+    text-align:center;
+}
+.home .how-it-works .list .item img{
+    height:89px;
+}
+.home .how-it-works .list .item h5{
+    margin:24px 0 16px 0;
+}
+.home .how-it-works .list .item .text{
+    font-size:16px;
+    color:#364B63;
+}
+/* end how it works */
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* mobile */
+@media screen and (max-width:426px){
+    .home .header .nav-mobile{
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .home .header .navigation-home{
+        padding:5px 0;
+    }
+    .home .header .navigation-home img{
+        height:25px;
+    }
+
+    .home .header .navigation-home .menu{
+        text-align:right;
+        padding-right:30px;
+        cursor:pointer;
+    }
+
+    .home .header .navigation-home .logo{
+        text-align:left;
+        padding:0;
+    }
+
+    .home .header .navigation-container{
+        position:fixed;
+        top:0;
+        right:0;
+        height:100vh;
+        z-index:10;
+        background:#fff;
+        display:block;
+        padding:20px 0;
+        font-size:18px;
+        width:100vw;
+        color:#263238;
+        transition:.5s ease-in-out all;
+    }
+    .home .header .navigation-container-close{
+        right:-100vw;
+        transition:.5s ease-in-out all;
+    }
+    .home .header .navigation-container .close{
+        color:red;
+        text-align:left;
+        font-size:30px;
+        padding-left:30px;
+        margin-bottom:30px;
+    }
+    .home .header .navigation-container .logo{
+        margin-bottom:50px;
+        padding:0 30px 10px 30px;
+    }
+    .home .header .navigation-container .logo img{
+        width:150px;
+    }
+    .home .header .navigation-container .item{
+        padding:20px 0;
+        border-top:1px rgb(214, 214, 214) solid;
+        width:82.5%;
+        display:flex;
+        justify-content:space-between;
+        margin:auto;
+        font-size:16px;
+    }
+    .home .header .navigation-container .item img{
+        height:15px;
+    }
+    
+    .home .header .nav-desktop{
+        display:none;
+    }
 }
