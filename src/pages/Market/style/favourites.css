@@ -1,0 +1,89 @@
+/* product */
+.favourites{
+    padding:150px 70px 50px 70px;
+}
+.favourites .head{
+    font-size:24px;
+    margin-bottom:24px;
+}
+
+.favourites .item-container{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    margin-top:15px;
+}
+.favourites .item-container .card{
+    width:90%;
+    margin-bottom:50px;
+    font-size:16px;
+}
+.favourites .item-container .card .image{
+    height:230px;
+    margin-bottom:16px;
+    border-radius:4px;
+    position:relative;
+    z-index:-10;
+}
+.favourites .item-container .card .image img{
+    width:50px;
+    position:absolute;
+    top:8px;
+    right:2px;
+    cursor:pointer;
+}
+.favourites .item-container .card .text{
+    margin-bottom:32px;
+}
+.favourites .item-container .card .price{
+    font-weight:700;
+    margin-bottom:16px;
+}
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* tablet portrait */
+@media screen and (max-width:1024px){
+    /* product */
+    .favourites{
+        padding:150px 50px 50px 50px;
+    }
+    
+    .favourites .item-container{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+}
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* mobile */
+@media screen and (max-width:426px){
+    /* product */
+    .favourites{
+        padding:100px 30px 50px 30px;
+    }
+    
+    .favourites .item-container{
+        grid-template-columns:1fr;
+    }
+    .favourites .item-container .card{
+        width:100%;
+    }
+}

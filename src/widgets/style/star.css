@@ -1,0 +1,53 @@
+
+/* #root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+  .star-rating{
+      display:inline-block;
+      z-index:-10;
+      position:relative;
+  }
+  .star {
+    cursor: pointer;
+    margin-right:10px;
+    display:inline-block;
+    background-color: #E9F0F7;
+    z-index:-10;
+    position:relative;
+    -webkit-clip-path: polygon(
+      50% 0%,
+      63% 38%,
+      100% 38%,
+      69% 59%,
+      82% 100%,
+      50% 75%,
+      18% 100%,
+      31% 59%,
+      0% 38%,
+      37% 38%
+    );
+    clip-path: polygon(
+      50% 0%,
+      63% 38%,
+      100% 38%,
+      69% 59%,
+      82% 100%,
+      50% 75%,
+      18% 100%,
+      31% 59%,
+      0% 38%,
+      37% 38%
+    );
+    transition:.25s ease-in-out all;
+  }
+  
+  .star.selected {
+    background-color: #0C56E9;
+    transition:.25s ease-in-out all;
+  }
+
+  .star-rating .value{
+      font-weight:600;
+  }

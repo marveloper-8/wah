@@ -27,6 +27,7 @@
 .home .header .navigation-home .extras .market{
     margin-right:24px;
     font-size:16px;
+    color:#fff;
 }
 .home .header .navigation-home .extras img{
     margin-left:40px;
@@ -136,7 +137,196 @@
     display:grid;
     grid-template-columns:1fr 1fr;
 }
+.home .become-a-vendor .text{
+    background:#F0F5FF;
+    padding:96px 108px 118px 108px;
+}
+.home .become-a-vendor .text p{
+    padding:24px 0 69px 0;
+    line-height:29px;
+}
 /* end vendor */
+
+/* download */
+.home .download{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    padding-top:85px;
+}
+.home .download .text{
+    padding-left:100px;
+}
+.home .download .text p{
+    padding-right:100px;
+}
+.home .download .text h3{
+    padding:56px 100px 64px 0;
+}
+.home .download .text img{
+    width:220px;
+}
+.home .download .text .play-store{
+    margin-right:46px;
+}
+.home .download .image{
+    text-align:center;
+}
+/* end download */
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* tablet portrait */
+@media screen and (max-width:1024px){
+    /* header */
+    .home .header{
+        padding:24px 30px 130px 30px;
+    }
+    .home .header h1{
+        padding-right:200px;
+        margin:105px 0 24px 0;
+    }
+    .home .header p{
+        padding-right:200px;
+        margin-bottom:50px;
+    }
+    /* end of header */
+
+    /* category */
+    .home .category{
+        padding:65px 70px;
+        margin-bottom:62px;
+    }
+    .home .category .list{
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+        margin:32px 0 0 0;
+        padding-bottom:50px;
+    }
+    .home .category .list .item{
+        width:85%;
+        box-shadow: 0px 10px 35px rgba(2, 23, 64, 0.08);
+        border-radius: 4px;
+    }
+    .home .category .list .item .background{
+        height:300px;
+    }
+    .home .category .list .item .text{
+        text-align:center;
+        padding:24px 0;
+
+    }
+    /* end of category */
+
+    /* how it works */
+    .home .how-it-works{
+        padding:0 36px 47px 36px;
+    }
+    .home .how-it-works .title{
+        text-align:center;
+    }
+    .home .how-it-works .title h3{
+        margin:0;
+    }
+    .home .how-it-works .title .underline{
+        background:#B9D0FD;
+        height:19px;
+        width:295px;
+        display:inline-block;
+        position:relative;
+        bottom:20px;
+        z-index:-1;
+    }
+
+    .home .how-it-works .list{
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+        margin-top:60px;
+    }
+    .home .how-it-works .list .item{
+        padding:0 49.5px;
+        text-align:center;
+        margin-bottom:50px;
+    }
+    .home .how-it-works .list .item img{
+        height:89px;
+    }
+    .home .how-it-works .list .item h5{
+        margin:24px 0 16px 0;
+    }
+    .home .how-it-works .list .item .text{
+        font-size:16px;
+        color:#364B63;
+    }
+    /* end how it works */
+
+    /* info */
+    .home .info{
+        padding-bottom:74px;
+        text-align:center;
+    }
+    .home .info img{
+        width: 100%;
+        margin-bottom:45px;
+    }
+    .home .info h2{
+        padding:0 75px;
+        margin:0 0 24px 0;
+    }
+    .home .info p{
+        padding:0 150px;
+    }
+    /* end info */
+
+    /* vendor */
+    .home .become-a-vendor{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+    .home .become-a-vendor .text{
+        background:#F0F5FF;
+        padding:96px 50px 118px 50px;
+    }
+    .home .become-a-vendor .text p{
+        padding:24px 0 69px 0;
+        line-height:29px;
+    }
+    /* end vendor */
+
+    /* download */
+    .home .download{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        padding-top:85px;
+    }
+    .home .download .text{
+        padding-left:50px;
+    }
+    .home .download .text p{
+        padding-right:50px;
+    }
+    .home .download .text h3{
+        padding:30px 50px 40px 0;
+    }
+    .home .download .text img{
+        width:220px;
+    }
+    .home .download .text .play-store{
+        margin-right:46px;
+    }
+    .home .download .image{
+        text-align:center;
+    }
+    /* end download */
+}
 
 /* break */
 /* break */
@@ -151,9 +341,13 @@
 
 /* mobile */
 @media screen and (max-width:426px){
+    /* header */
+    .home .header{
+        padding:24px 30px 130px 30px;
+    }
     .home .header .nav-mobile{
         display:grid;
-        grid-template-columns:1fr 1fr 1fr;
+        grid-template-columns:1fr 1fr;
     }
 
     .home .header .navigation-home{
@@ -165,13 +359,17 @@
 
     .home .header .navigation-home .menu{
         text-align:right;
-        padding-right:30px;
+        padding-right:0;
         cursor:pointer;
     }
 
     .home .header .navigation-home .logo{
         text-align:left;
         padding:0;
+    }
+
+    .home .header .navigation-home .logo img{
+        width:auto;
     }
 
     .home .header .navigation-container{
@@ -218,8 +416,133 @@
     .home .header .navigation-container .item img{
         height:15px;
     }
+    .home .header h1{
+        padding-right:0;
+        margin:105px 0 24px 0;
+    }
+    .home .header p{
+        padding-right:0;
+        margin-bottom:50px;
+    }
     
     .home .header .nav-desktop{
         display:none;
     }
+    /* end of header */
+
+    /* category */
+    .home .category{
+        padding:65px 30px;
+        margin-bottom:32px;
+    }
+    .home .category .list{
+        display:grid;
+        grid-template-columns:1fr;
+        margin:32px 0 0 0;
+        padding-bottom:50px;
+    }
+    .home .category .list .item{
+        width:100%;
+        margin-bottom:30px;
+    }
+    .home .category .list .item .text{
+        text-align:center;
+        padding:24px 0;
+
+    }
+    /* end of category */
+
+    /* how it works */
+    .home .how-it-works{
+        padding:0 30px 67px 30px;
+    }
+
+    .home .how-it-works .list{
+        display:grid;
+        grid-template-columns:1fr;
+        margin-top:60px;
+    }
+    .home .how-it-works .list .item{
+        padding:0 49.5px;
+        text-align:center;
+        margin-bottom:30px;
+    }
+    .home .how-it-works .list .item img{
+        height:89px;
+    }
+    .home .how-it-works .list .item h5{
+        margin:24px 0 16px 0;
+    }
+    .home .how-it-works .list .item .text{
+        font-size:16px;
+        color:#364B63;
+    }
+    /* end how it works */
+
+    /* info */
+    .home .info{
+        padding-bottom:74px;
+        text-align:center;
+    }
+    .home .info img{
+        width: 100%;
+        margin-bottom:45px;
+    }
+    .home .info h2{
+        padding:0 30px;
+        margin:0 0 24px 0;
+    }
+    .home .info p{
+        padding:0 30px;
+    }
+    /* end info */
+
+    /* vendor */
+    .home .become-a-vendor{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+    .home .become-a-vendor .image{
+        height:400px;
+    }
+    .home .become-a-vendor .text{
+        background:#F0F5FF;
+        padding:96px 30px 118px 30px;
+    }
+    .home .become-a-vendor .text p{
+        padding:24px 0 69px 0;
+        line-height:29px;
+    }
+    /* end vendor */
+
+    /* download */
+    .home .download{
+        display:grid;
+        grid-template-columns:1fr;
+        padding-top:85px;
+    }
+    .home .download .text{
+        padding:0 30px;
+    }
+    .home .download .text p{
+        padding-right:0;
+    }
+    .home .download .text h3{
+        padding:56px 0 64px 0;
+    }
+    .home .download .text img{
+        width:220px;
+    }
+    .home .download .text .play-store{
+        margin-right:46px;
+    }
+    .home .download .image{
+        text-align:center;
+        padding:0 30px;
+        margin-top:50px;
+    }
+    .home .download .image img{
+        width:100%;
+    }
+    /* end download */
 }

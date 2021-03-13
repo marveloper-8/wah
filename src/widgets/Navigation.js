@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 // styling
 import './style/navigation.css'
 // icons
@@ -17,7 +18,9 @@ const Navigation = () => {
         <>
             <div className="navigation nav-desktop">
                 <div className="logo">
-                    <img src={logo_full} alt="logo" />
+                    <Link className="link" to='/'>
+                        <img src={logo_full} alt="logo" />
+                    </Link>
                 </div>
 
                 <div>
@@ -28,10 +31,18 @@ const Navigation = () => {
                 </div>
 
                 <div className="extras">
-                    <span className="market">Marketplace</span>
-                    <img src={user} alt="user" />
-                    <img src={favourite} alt="favourite" />
-                    <img src={cart} alt="cart" />
+                    <Link className="link" to='/market'>
+                        <span className="market">Marketplace</span>
+                    </Link>
+                    <Link className="link" to='/account'>
+                        <img src={user} alt="user" />
+                    </Link>
+                    <Link className="link" to='/favourites'>
+                        <img src={favourite} alt="favourite" />
+                    </Link>
+                    <Link className="link" to='/cart'>
+                        <img src={cart} alt="cart" />
+                    </Link>
                 </div>
             </div>
 

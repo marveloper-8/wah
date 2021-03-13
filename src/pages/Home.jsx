@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 // styling
 import './style/home.css'
 // widgets
 import ButtonArrow from '../widgets/ButtonArrow'
 // icons
 import logo_full_white from '../icons/logo-white-full.svg'
-import logo_full from '../icons/logo-white.svg'
+import logo_full from '../icons/logo-full.svg'
 import logo from '../icons/logo-white.svg'
 import menu from '../icons/menu-white.svg'
 import user from '../icons/user-white.svg'
@@ -16,6 +17,8 @@ import choose from '../illustrations/choose-water.svg'
 import order from '../illustrations/place-order.svg'
 import receive from '../illustrations/receives-order.svg'
 import deliver from '../illustrations/water-delivered.svg'
+import play_store from '../illustrations/play-store.svg'
+import app_store from '../illustrations/app-store.svg'
 // images
 import background from '../images/header-image.png'
 import sachet_water from '../images/sachet-water.png'
@@ -23,6 +26,8 @@ import bottled_water from '../images/bottled-water.png'
 import dispenser_water from '../images/dispenser-water.png'
 import water_truck from '../images/water-truck.png'
 import drinking from '../images/drinking.png'
+import vendor from '../images/vendor.png'
+import phone from '../images/phone.png'
 // data
 const categories = [
     {
@@ -79,8 +84,12 @@ function Home() {
                     </div>
 
                     <div className="extras">
-                        <span className="market">Marketplace</span>
-                        <img src={user} alt="user" />
+                        <Link className="link" to='/market'>
+                            <span className="market">Marketplace</span>
+                        </Link>
+                        <Link className="link" to='/authentication'>
+                            <img src={user} alt="user" />
+                        </Link>
                         <img src={favourite} alt="favourite" />
                         <img src={cart} alt="cart" />
                     </div>
@@ -142,7 +151,7 @@ function Home() {
 
                 <div className="list">
                     {categories.map(item => {
-                        return <div className="item">
+                        return <div className="item" key={item.text}>
                             <div className="background" style={{
                                 backgroundImage: `url(${item.image})`, 
                                 backgroundSize:`cover`
@@ -161,7 +170,7 @@ function Home() {
                 
                 <div className="list">
                     {how_it_works.map(item => {
-                        return <div className="item">
+                        return <div className="item" key={item.text}>
                             <img src={item.image} alt={item.title} />
                             <h5>{item.title}</h5>
                             <div className="text">{item.text}</div>
@@ -177,18 +186,32 @@ function Home() {
             </div>
 
             <div className="become-a-vendor">
-                <div className="image"></div>
+                <div className="image" style={{
+                    backgroundImage: `url(${vendor})`, 
+                    backgroundSize:`cover`
+                }}></div>
 
                 <div className="text">
-                    <h2>We believe water should be accessible to everyone no matter where they are</h2>
-                    <p>By creating a platform whereby water vendors can be connected to customers we are achieving that</p>
+                    <h2>Become a Vendor</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <ButtonArrow
-                        text="View Marketplace"
+                        text="Apply as a vendor"
                         type="submit"
-                        styling="bg-white"
+                        styling="bg-primary"
                         arrow="white"
                     />
                 </div>
+            </div>
+
+            <div className="download">
+                <div className="text">
+                    <p>With the water alliance app you can make your order seamlessly at anytime and anywhere.</p>
+                    <h3 className="color-primary">Download the App on Google Play or the App Store.</h3>
+                    <img src={play_store} alt="download on play store" className="play-store" />
+                    <img src={app_store} alt="download on app store" />
+                </div>
+
+                <div className="image"><img src={phone} alt="download" /></div>
             </div>
             
         </div>

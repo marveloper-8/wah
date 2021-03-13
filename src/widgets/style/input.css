@@ -1,0 +1,79 @@
+.text-input{
+    margin-bottom:25px;
+    text-align:left;
+}
+.text-input .label{
+    margin-bottom:8px;
+    color:#607080;
+}
+.text-input input{
+    border: 1px solid #729FF8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding:15px;
+    width:100%;
+}
+
+.text-input-double{
+    display:inline-block;
+    width:47.5%;
+}
+.text-input-double input{
+    width:100%;
+}
+
+/* text input naira */
+.text-input-naira{
+    padding:8px 16px;
+    border: 1px solid #729FF8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display:inline-block;
+    width:47.5%;
+    font-size:14px;
+    color:#607080;
+}
+.text-input-naira input{
+    border:none;
+    display:inline-block;
+    width:75%;
+}
+
+/* radio input */
+.radio-input{
+    text-align:left;
+}
+.radio-input input{
+    margin:0 16px 0 0;
+    padding:0;
+    cursor:pointer;
+}
+.radio-input img{
+    margin:0 16px 0 0;
+    padding:0;
+    position:relative;
+    z-index:-10;
+}
+.radio-input span{
+    position:relative;
+    z-index:-10;
+}
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* mobile */
+@media screen and (max-width:426px){
+    .text-input-double{
+        display:block;
+        width:100%;
+    }
+}
