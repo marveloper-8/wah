@@ -1,0 +1,51 @@
+.desktop-alt, .tablet, .mobile{
+    display:none!important;
+}
+.desktop{
+    display:block!important;
+}
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* tablet portrait */
+@media screen and (max-width:1024px){
+    .tablet-alt, .mobile, .desktop{
+        display:none!important;
+    }
+    .tablet, .mobile-alt, .desktop-alt{
+        display:block!important;
+    }
+}
+
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* mobile */
+@media screen and (max-width:426px){
+    .mobile-alt, .desktop, .tablet{
+        display:none!important;
+    }
+    .mobile, .desktop-alt, .tablet-alt{
+        display:block!important;
+    }
+
+    /* orders item */
+}

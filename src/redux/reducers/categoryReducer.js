@@ -1,0 +1,1 @@
+import {PRODUCT_CATEGORY} from '../actions/category'

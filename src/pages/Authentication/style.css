@@ -1,0 +1,188 @@
+.authentication{
+    background:#F0F5FF;
+    min-height:70vh;
+    padding:0 360px 207px 360px;
+}
+.authentication .logo{
+    padding:53px 0 36px 0;
+    text-align:center;
+}
+.authentication .logo img{
+    width:64px;
+}
+
+/* form */
+.authentication .form{
+    background:#fff;
+    border-radius:4px;
+}
+.authentication .form .nav{
+    text-align:center;
+    border-bottom: 1px solid #D3DDE7;
+}
+.authentication .form .nav .item{
+    padding:42px 15px 24px 15px;
+    display:inline-block;
+    color:#94A3B3;
+    cursor:pointer;
+    font-size:24px;
+}
+.authentication .form .nav .create-account{
+    margin-right:135px;
+}
+.authentication .form .nav .active{
+    border-bottom: 1.5px solid #0C56E9;
+    color:#0C56E9;
+}
+
+.authentication .form form{
+    padding:48px 55px 80px 55px;
+    text-align:center;
+}
+.authentication .form form .third-party{
+    color:#000;
+}
+.authentication .form form .third-party .item{
+    width:60%;
+    margin:0 auto 25px auto;
+    text-align:left;
+    padding:15px 40px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.authentication .form form .third-party .item img{
+    height:20px;
+    margin-right:62px;
+}
+.authentication .form form .or{
+    border-bottom: 1px solid #D3DDE7;
+    margin-bottom:50px;
+}
+.authentication .form form .or span{
+    padding:0 8px;
+    background:#fff;
+    position:relative;
+    top:10px;
+}
+
+.authentication .form form .input-container{
+    padding:0 50px 50px 50px;
+}
+.authentication .form form .input-container .double-item{
+    display: flex;
+    justify-content:space-between; 
+    padding:0;
+    margin:0;
+}
+.authentication .form form .input-container .item{
+    margin-bottom:24px;
+}
+.authentication .form form .input-container .button-item{
+    padding-top:24px;
+}
+.authentication .form form .input-container .forgot-password span{
+    font-size:16px;
+    cursor:pointer;
+}
+
+.authentication .form form .title{
+    font-weight:600;
+}
+.authentication .form form p{
+    padding:18px 0 32px 0;
+    text-align:left;
+    font-size:16px;
+}
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* tablet portrait */
+@media screen and (max-width:1024px){
+    .authentication{
+        background:#F0F5FF;
+        min-height:85vh;
+        padding:0 100px 207px 100px;
+    }
+}
+
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+/* break */
+
+/* mobile */
+@media screen and (max-width:426px){
+    .authentication{
+        background:#F0F5FF;
+        min-height:85vh;
+        padding:0;
+    }
+
+    /* form */
+    .authentication .form{
+        border-radius:0;
+    }
+    .authentication .form .nav .item{
+        padding:42px 5px 24px 5px;
+        font-size:18px;
+    }
+    .authentication .form .nav .create-account{
+        margin-right:20px;
+    }
+    
+    .authentication .form form{
+        padding:48px 30px 80px 30px;
+    }
+    .authentication .form form .third-party .item{
+        width:100%;
+        margin:0 auto 25px auto;
+        padding:15px 20px;
+    }
+    .authentication .form form .third-party .item img{
+        margin-right:30px;
+    }
+
+    .authentication .form form .input-container{
+        padding:0;
+    }
+    .authentication .form form .input-container .double-item{
+        display: block;
+        padding:0;
+        margin:0;
+    }
+    .authentication .form form .input-container .item{
+        margin-bottom:24px;
+    }
+    .authentication .form form .input-container .button-item{
+        padding-top:24px;
+    }
+    .authentication .form form .input-container .forgot-password span{
+        font-size:16px;
+        cursor:pointer;
+    }
+    
+    .authentication .form form .title{
+        font-weight:600;
+    }
+    .authentication .form form p{
+        padding:18px 0 32px 0;
+        text-align:left;
+        font-size:16px;
+    }
+}
