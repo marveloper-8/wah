@@ -11,10 +11,10 @@ import TextInput from '../../widgets/TextInput'
 import Button from '../../widgets/Button'
 // icons
 import logo from '../../icons/logo.svg'
-import google from '../../icons/google.svg'
 import facebook from '../../icons/facebook.svg'
+import google from '../../icons/google.svg'
 import apple from '../../icons/apple.svg'
-// data
+// constants
 const third_party = [
     {
         "image": google,

@@ -10,11 +10,8 @@ import CheckboxInput from '../../widgets/CheckboxInput'
 import TextInputNaira from '../../widgets/TextInputNaira'
 import Navigation from '../../widgets/Navigation'
 import Footer from '../../widgets/Footer'
-// icon
 import favourite from '../../icons/favourite-two.svg'
 // images
-import sachet_water from '../../images/sachet-water.png'
-// data
 const product_filter = [
     {
         "name": "Sachet Water",
