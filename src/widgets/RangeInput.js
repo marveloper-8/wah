@@ -1,18 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 // styles
 import './style/range.css'
 
-const SelectInput = ({label, styling}) => {
-    // constants
-    let [unit, setUnit] = useState(1)
-    // end of constants
-
-    return <div className={`range-input ${styling}`}>
-                <div className="label">{label}</div>
+const SelectInput = e => {
+    return <div className={`range-input ${e.styling}`}>
+                <div className="label">{e.label}</div>
                 <div className="inner">
-                    <div className="increment" onClick={unit > 1 ? () => setUnit(unit--) : ''}>-</div>
-                    <div className="value">{unit}</div>
-                    <div className="decrement" onClick={() => setUnit(unit++)}>+</div>
+                    <div className="decrement" onClick={e.decrement}>-</div>
+                    <div className="value">{e.value}</div>
+                    <div className="increment" onClick={e.increment}>+</div>
                 </div>
             </div>
 }

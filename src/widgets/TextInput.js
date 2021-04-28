@@ -18,6 +18,7 @@ const TextInput = e => {
                 onChange={e.onChange}
                 name={e.name}
                 required={e.required}
+                disabled={e.disabled}
             ></input>
         </div>
 }

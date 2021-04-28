@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import { useSelector } from "react-redux";
-import {logout} from '../../redux/actions/actionsAuth'
-import PropTypes from 'prop-types'
+import { logout } from '../../redux/actions/auth';
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 // styling
 import './style/account.css'
 // icon
@@ -24,7 +23,8 @@ import Address from './Address'
 import Payment from './Payment'
 
 const Account = props => {
-    const user = useSelector((state) => state.auth.data.user);
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     // functions
     const [functions, setFunctions] = useState({
@@ -35,11 +35,6 @@ const Account = props => {
     })
     
     console.log(localStorage.getItem('token'))
-
-
-    const propTypes = {
-        logout:PropTypes.func.isRequired
-    }
 
     const Component = () => {
         if(functions.profile_page){
@@ -66,8 +61,8 @@ const Account = props => {
                             }} />
                         </div>
                         <div className="text">
-                            <div className="active">{user.name}</div>
-                            <div className="small">{user.email}</div>
+                            <div className="active">Joshua Equere</div>
+                            <div className="small">g.joshua.e@gmail.com</div>
                         </div>
                     </div>
                 </section>
@@ -134,7 +129,10 @@ const Account = props => {
                     </section>
                     <div></div>
                     <section className="third-navigation">
-                        <div className="item last-item signout" onClick={props.logout}>
+                        <div className="item last-item signout" onClick={() => {
+                                dispatch(logout());
+                              history.push("/login")
+                              }}>
                             <div className="icon">
                                 <img src={signout_icon} alt="payment" />
                             </div>
@@ -151,7 +149,4 @@ const Account = props => {
     </>
 }
 
-export default connect(
-    null,
-    {logout}
-)(Account)
+export default Account

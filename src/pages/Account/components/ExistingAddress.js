@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { getAddress } from "../../../redux/actions/user";
 // widgets
 import ButtonTwo from '../../../widgets/ButtonTwo'
+import AddressItem from './Addresses'
 
 const ExistingAddress = e => {
+    const dispatch = useDispatch();
+    const addresses = useSelector(state => state.user.getAddress.data.data)
+
+    useEffect(() => {
+      dispatch(getAddress());
+    }, [dispatch]);
+
+    console.log(addresses)
+
     return <>
         <section className="double-section">
             <span className="head-two">Address Details</span>
@@ -14,60 +26,15 @@ const ExistingAddress = e => {
             </span>
         </section>
         <section className="section-two">
-            <section className="inner">
-                <div className="double-item">
-                    <div>
-                        <div className="name">Adewale Uchechi</div>
-                        <div className="small">
-                            <p>244, Felix brown street, Epic place estate, Ikeja, Lagos Nigeria.</p>
-                            <p>Ikeja LGA</p>
-                            <p>08128765467</p>
-                            <div className="default">Default Address</div>
-                        </div>
-                    </div>
-                    <div className="right">
-                        <div className="button-container">
-                            <ButtonTwo
-                                text="Edit"
-                                styling="bg-primary half-input"
-                            />
-                        </div>
-                        <div className="button-container">
-                            <ButtonTwo
-                                text="Delete"
-                                styling="bg-white-border-red half-input"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div className="line-break"></div>
-            <section className="inner">
-                <div className="double-item">
-                    <div>
-                        <div className="name">Fela Clarkson</div>
-                        <div className="small">
-                            <p>244, Felix brown street, Epic place estate, Ikeja, Lagos Nigeria.</p>
-                            <p>08128765467</p>
-                            <div className="undefault">Set as Default Address</div>
-                        </div>
-                    </div>
-                    <div className="right">
-                        <div className="button-container">
-                            <ButtonTwo
-                                text="Edit"
-                                styling="bg-primary half-input"
-                            />
-                        </div>
-                        <div className="button-container">
-                            <ButtonTwo
-                                text="Delete"
-                                styling="bg-white-border-red half-input"
-                            />
-                        </div>
-                    </div>
-                </div>    
-            </section>
+            {addresses === undefined ? 
+                <section className="inner">Please wait</section>
+                : addresses.length < 1 
+                ? <section className="inner">You do not have an address connected to this account. Add to proceed</section>
+                : addresses.map(item => { return <AddressItem 
+                        item={item} 
+                        key={item.id}
+                    /> })
+            }
         </section>
     </>
 }

@@ -2,16 +2,16 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {Provider} from 'react-redux'
-import store from './redux/store'
-import {loadUser} from './redux/actions/actionsAuth'
+import { getMe } from "./redux/actions/user";
+import { store } from "./redux/store";
 // style
 import './App.css';
 import './responsiveness.css'
 // pages
 import BadRequest from './pages/BadRequest'
 import Home from './pages/Home'
-import UnauthenticatedRoute from './pages/Unauthenticated'
-import AuthenticatedRoute from './pages/Authenticated'
+import UnauthenticatedRoute from './utils/UnauthenticatedRoute'
+import AuthenticatedRoute from './utils/AuthenticatedRoute'
 // pages -- authentication
 import Authentication from './pages/Authentication'
 import Signup from './pages/Authentication/Signup'
@@ -36,13 +36,13 @@ const Routing = () => {
       <UnauthenticatedRoute path='/signup' component={Signup} />
       <UnauthenticatedRoute path='/login' component={Login} />
       {/* profile */}
-      <AuthenticatedRoute path='/account' component={Account} />
+      <Route path='/account' component={Account} />
       {/* marketplace */}
-      <Route path='/market' component={Market} />
-      <Route path='/product-details' component={ProductDetails} />
-      <Route path='/favourites' component={Favourites} />
-      <Route path='/cart' component={Cart} />
-      <Route path='/checkout' component={Checkout} />
+      <AuthenticatedRoute path='/market' component={Market} />
+      <AuthenticatedRoute path='/product-details/:id' component={ProductDetails} />
+      <AuthenticatedRoute path='/favourites' component={Favourites} />
+      <AuthenticatedRoute path='/cart' component={Cart} />
+      <AuthenticatedRoute path='/checkout' component={Checkout} />
       {/* bad request */}
       <BadRequest />
     </Switch>
@@ -51,8 +51,8 @@ const Routing = () => {
 
 const App = () => {
   useEffect(() => {
-    store.dispatch(loadUser())
-  }, [])
+    if (store.getState().user.authUser.isLoggedIn) store.dispatch(getMe());
+  });
   console.log(localStorage.getItem('token'))
   return <Provider store={store}>
       <div className="App">

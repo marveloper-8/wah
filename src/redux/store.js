@@ -1,17 +1,26 @@
-import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from './reducers'
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import ReduxThunk from "redux-thunk";
+import { persistStore } from "redux-persist";
+import rootReducer from "./rootReducer";
+import createSagaMiddleware from "redux-saga";
+import logger from "redux-logger";
+import rootSaga from "./sagas";
 
-const initialState = {}
+const sagaMiddleware = createSagaMiddleware();
 
-const middleWare = [thunk]
+const middlewares = [sagaMiddleware, ReduxThunk];
+const initialState = {};
 
-const store = createStore(
-    rootReducer, 
-    initialState, 
-    compose(
-        applyMiddleware(...middleWare),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-))
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
 
-export default store
+export const store = createStore(
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middlewares))
+);
+export const persistor = persistStore(store);
+
+sagaMiddleware.run(rootSaga);

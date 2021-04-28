@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import { toast } from "../../helpers/apiRequests";
 import {Link} from 'react-router-dom'
-import {connect, useSelector} from 'react-redux'
-import {login} from '../../redux/actions/actionsAuth'
-import {clearErrors} from '../../redux/actions/actionsError'
+import {useDispatch} from 'react-redux'
+import { loginUser } from "../../services/auth";
+import { setUser } from "../../redux/actions/user";
 import Swal from 'sweetalert2'
 // styling
 import './style.css'
@@ -31,53 +32,61 @@ const third_party = [
 ]
 
 const Login = props => {
-    const [email, setEmail] = useState('marveloper.8@gmail.com')
-    const [password, setPassword] = useState('123456')
-    const [msg, setMsg] = useState(null)
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState({
+      email: "",
+      password: "",
+    });
 
-    console.log(email, password, msg)
-    
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+  
+      setData({ ...data, [name]: value });
+    };
 
-    const onSubmit = e => {
-        e.preventDefault()
+    console.log(data.email, data.password)
 
-        const user = {
-            email,
-            password
-        }
-
-        props.login(user)
-    }
-
-    useEffect(() => {
-        if(props.error.id === 'LOGIN_FAIL'){
-            setMsg(props.error.msg.msg)
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Error!',
-                text: msg,
-                showConfirmButton: false,
-                timer: 3000
-            })
-        } else if(props.error.id === 'LOGIN'){
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      const { email, password } = data;
+      const userInfo = {
+        email,
+        password,
+      };
+  
+      try {
+        toast("Processing please wait...");
+        let response = await loginUser(userInfo);
+  
+        if (response) {
+          if (response.data) {
+            localStorage.setItem("chosen_token", response.data.token);
+            dispatch(setUser(response.data));
+            setLoading(false);
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
                 title: 'Success!',
-                text: "You have logged in successfully",
+                text: 'Signed in successfully',
                 showConfirmButton: false,
                 timer: 3000
             })
-        } else{
-            setMsg(null)
+          }
         }
-    }, [props.error])
-
-    // useEffect(() => {
-    //      else if(props.error.id === 'LOGIN_FAIL'){
-    //     }
-    // }, [onSubmit])
+      } catch (x) {
+        setLoading(false);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error!',
+            text: 'Sign in unsuccessful',
+            showConfirmButton: false,
+            timer: 3000
+        })
+      }
+    };
 
     return <div className="authentication">
         <div className="logo">
@@ -96,7 +105,7 @@ const Login = props => {
                 </div>
             </div>
     
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="input-container">
                     <div className="item">
                         <TextInput
@@ -104,8 +113,9 @@ const Login = props => {
                             type="email"
                             styling="bg-white"
                             name="email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            value={data.email}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
                             required={true}
                         />
                     </div>
@@ -116,15 +126,17 @@ const Login = props => {
                             type="password"
                             styling="bg-white"
                             name="password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                            // required={true}
+                            value={data.password}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
+                            required={true}
                         />
                     </div>  
 
                     <div className="item button-item">
                         <Button
-                            text="Sign In"
+                            text={loading ? "Please Wait..." : "Sign In"}
+                            disabled={loading ? true : false}
                             type="submit"
                             styling="bg-primary full-input"
                         />
@@ -150,12 +162,4 @@ const Login = props => {
     </div>
 }
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    error: state.error,
-    auth: state.auth
-})
-export default connect(
-    mapStateToProps, 
-    {login, clearErrors}
-)(Login)
+export default Login

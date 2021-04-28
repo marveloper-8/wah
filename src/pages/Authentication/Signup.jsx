@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
-import {register} from '../../redux/actions/actionsAuth'
-import {clearErrors} from '../../redux/actions/actionsError'
 import Swal from 'sweetalert2'
+import {useDispatch} from 'react-redux'
+import { toast } from "../../helpers/apiRequests";
+import { registerUser } from "../../services/auth";
+import { setUser } from "../../redux/actions/user";
 // styling
 import './style.css'
 // widgets
@@ -33,82 +33,68 @@ const third_party = [
 ]
 
 const Signup = props => {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone_no: "",
+        password: "",
+        role: ""
+    });
 
-    const [firstName, setFirstName] = useState('Joshua')
-    const [lastName, setLastName] = useState('Equere')
-    const [name, setName] = useState(`${firstName} ${lastName}`)
-    const [email, setEmail] = useState('marveloper.8@gmail.com')
-    const [phone_no, setPhone] = useState('08152298288')
-    const [role, setRole] = useState('customer')
-    const [password, setPassword] = useState('123456')
-    const [msg, setMsg] = useState(null)
+    const handleChange = (e) => {
+        const { name, value } = e.target;
 
+        setData({ ...data, [name]: value });
+    };
 
-    console.log(props.error)
+    console.log(data.firstName, data.lastName, data.email, data.phone_no, data.password)
 
-    console.log(props.isAuthenticated)
-
-    console.log(localStorage.getItem('token'))
-
-
-    const propTypes = {
-        isAuthenticated: PropTypes.bool,
-        error: PropTypes.object.isRequired,
-        register:PropTypes.func.isRequired,
-        clearErrors: PropTypes.func.isRequired
-    }
-
-
-
-    console.log(
-        name,
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      const { firstName, lastName, email, phone_no, password, role } = data;
+      const userInfo = {
+        name: `${firstName} ${lastName}`,
         email,
         phone_no,
-        role,
         password,
-        msg
-    )
-    
-
-    const onSubmit = e => {
-        e.preventDefault()
-
-        const newUser = {
-            name,
-            email,
-            phone_no,
-            role,
-            password
-        }
-
-        props.register(newUser)
-    }
-
-    useEffect(() => {
-        if(props.error.id === 'REGISTER_FAIL'){
-            setMsg(props.error.msg.msg)
-        } 
-
-        if(props.error.id === 'REGISTER'){
+        role
+      };
+  
+      try {
+        toast("Processing please wait...");
+        let response = await registerUser(userInfo);
+  
+        if (response) {
+          if (response.data) {
+            localStorage.setItem("chosen_token", response.data.access_token);
+            dispatch(setUser(response.data));
+            setLoading(false);
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
                 title: 'Success!',
-                text: "You have registered your account successfully",
+                text: 'Account created successfully',
                 showConfirmButton: false,
                 timer: 3000
             })
-        } else if(props.error.id === 'REGISTER_FAIL'){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Error!',
-                text: msg,
-                showConfirmButton: false,
-                timer: 3000
-            })
+          }
         }
-    }, [props, onSubmit])
+      } catch (x) {
+        setLoading(false);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error!',
+            text: 'Account creation unsuccessful',
+            showConfirmButton: false,
+            timer: 3000
+        })
+      }
+    };
 
     return <div className="authentication">
         <div className="logo">
@@ -127,7 +113,7 @@ const Signup = props => {
                 </div>
             </div>
     
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="third-party">
                     {third_party.map(item => {
                         return <div className="item" key={item.text}>
@@ -145,16 +131,20 @@ const Signup = props => {
                             label="First Name"
                             type="text"
                             styling="bg-white"
-                            value={firstName}
-                            onChange={e => setFirstName(e.target.value)}
+                            name="firstName"
+                            value={data.firstName}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
                             required={true}
                         />
                         <TextInputDouble
                             label="Last Name"
                             type="text"
                             styling="bg-white"
-                            value={lastName}
-                            onChange={e => setLastName(e.target.value)}
+                            name="lastName"
+                            value={data.lastName}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
                             required={true}
                         />
                     </div>
@@ -164,8 +154,10 @@ const Signup = props => {
                             label="Email Address"
                             type="email"
                             styling="bg-white"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            name="email"
+                            value={data.email}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
                             required={true}
                         />
                     </div>
@@ -175,8 +167,10 @@ const Signup = props => {
                             label="Phone Number"
                             type="phone_no"
                             styling="bg-white"
-                            value={phone_no}
-                            onChange={e => setPhone(e.target.value)}
+                            name="phone_no"
+                            value={data.phone_no}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
                         />
                     </div>
 
@@ -185,30 +179,24 @@ const Signup = props => {
                             label="Password"
                             type="password"
                             styling="bg-white"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
+                            name="password"
+                            value={data.password}
+                            onChange={handleChange}
+                            disabled={loading ? true : false}
                             required={true}
                         />
                     </div>  
 
-                    {/* <div className="item button-item" onClick={e.function}> */}
-                        <Button
-                            text="Create Account"
-                            type="submit"
-                            styling="bg-primary full-input"
-                        />
-                    {/* </div>   */}
+                    <Button
+                        text={loading ? "Please Wait..." : "Create Account"}
+                        disabled={loading ? true : false}
+                        type="submit"
+                        styling="bg-primary full-input"
+                    />
                 </div>
             </form>
         </div>
     </div>
 }
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
-})
-export default connect(
-    mapStateToProps, 
-    {register, clearErrors}
-)(Signup)
+export default Signup

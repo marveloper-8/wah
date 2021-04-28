@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {getItems, deleteItem} from '../../redux/actions/itemActions'
-import PropTypes from 'prop-types'
 // styling
 import './style/market.css'
 // widgets
@@ -31,22 +28,22 @@ const product_filter = [
     },
 ]
 
-const Market = props => {
-    // const [items, setItems] = useState([])
-
-    // useEffect(() => {
-    //     setItems(props.getItems())
-    // }, [])
-
-    const {products} = props.products
-
-    console.log(props.products)
+const Market = e => {
+    const [products, setProducts] = useState([])
+    
+    useEffect(()=>{
+        fetch('https://wah20.prodevs.io/api/product/search', {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt")
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                setProducts(result.data.data)
+            })
+    },[])
 
     console.log(products)
-
-    const onDeleteClick = id => {
-        props.deleteItem(id)
-    }
 
     return <>
         <Navigation />
@@ -86,21 +83,21 @@ const Market = props => {
                 <h5>All Products</h5>
                 <div className="item-container">
                     {products.map(item => {
-                        // <Link className="link" to='/product-details'></Link>
-                        return <div className="card" key={item.id} onClick={() => onDeleteClick(item.id)}>
-                            <div className="image" style={{
-                                backgroundImage: `url(${item.image})`, 
-                                backgroundSize:`cover`
-                            }}>
-                                <img 
-                                    src={favourite} 
-                                    alt="favourite" 
-                                    
-                                />
+                        return <Link className="link" to={`/product-details/${item.id}`}>
+                            <div className="card" key={item.id}>
+                                <div className="image" style={{
+                                    backgroundImage: `url(${item.images[0].image})`, 
+                                    backgroundSize:`cover`
+                                }}>
+                                    <img 
+                                        src={favourite} 
+                                        alt="favourite" 
+                                    />
+                                </div>
+                                <div className="text">{item.category.name}</div>
+                                <div className="price">{item.price}</div>
                             </div>
-                            <div className="text">{item.value}</div>
-                            <div className="price">₦{item.price}.00</div>
-                        </div>
+                        </Link>
                     })}
                 </div>
             </div>
@@ -108,13 +105,4 @@ const Market = props => {
         <Footer />
     </>
 }
-
-Market.propTypes = {
-    getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => ({
-    products: state.product
-})
-export default connect(mapStateToProps, {getItems, deleteItem})(Market)
+export default Market
