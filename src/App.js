@@ -36,7 +36,7 @@ const Routing = () => {
       <UnauthenticatedRoute path='/signup' component={Signup} />
       <UnauthenticatedRoute path='/login' component={Login} />
       {/* profile */}
-      <Route path='/account' component={Account} />
+      <AuthenticatedRoute path='/account' component={Account} />
       {/* marketplace */}
       <AuthenticatedRoute path='/market' component={Market} />
       <AuthenticatedRoute path='/product-details/:id' component={ProductDetails} />

@@ -109,4 +109,12 @@
     .cart .list{
         padding:0;
     }
+    .cart .list .item-container .card{
+        grid-template-columns:1fr;
+    }
+    .cart .list .item-container .card .image{
+        height:250px;
+        width:100%;
+        margin-bottom:20px;
+    }
 }

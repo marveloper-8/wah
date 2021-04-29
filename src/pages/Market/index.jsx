@@ -83,21 +83,21 @@ const Market = e => {
                 <h5>All Products</h5>
                 <div className="item-container">
                     {products.map(item => {
-                        return <Link className="link" to={`/product-details/${item.id}`}>
-                            <div className="card" key={item.id}>
-                                <div className="image" style={{
-                                    backgroundImage: `url(${item.images[0].image})`, 
-                                    backgroundSize:`cover`
-                                }}>
-                                    <img 
-                                        src={favourite} 
-                                        alt="favourite" 
-                                    />
-                                </div>
+                        return <div className="card" key={item.id}>
+                            <div className="image" style={{
+                                backgroundImage: `url(${item.images[0].image})`, 
+                                backgroundSize:`cover`
+                            }}>
+                                <img 
+                                    src={favourite} 
+                                    alt="favourite" 
+                                />
+                            </div>
+                            <Link className="link" to={`/product-details/${item.id}`}>
                                 <div className="text">{item.category.name}</div>
                                 <div className="price">{item.price}</div>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     })}
                 </div>
             </div>

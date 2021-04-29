@@ -269,6 +269,61 @@
     font-size:14px;
     margin-bottom:8px;
 }
+.account .account-content .edit-address{
+    position:fixed;
+    top:0;
+    left:0;
+    overflow-y:scroll;
+}
+.account .account-content .edit-address .background{
+    position:fixed;
+    top:-100vh;
+    left:0;
+    background:rgba(0,0,0,.7);
+    width:100%;
+    height:100%;
+    transition:.5s ease-in-out all;
+}
+.account .account-content .edit-address .form-content{
+    text-align:center;
+    position:fixed;
+    z-index:100000;
+    width:100vw;
+    height:100vh;
+    bottom:-150vh;
+    left:0;
+    display:flex;
+    justify-content: space-between;
+    overflow-y:scroll;
+    padding:50px 0;
+}
+.account .account-content .edit-address .form-content form{
+    background:#fff;
+    text-align:left;
+    width:25vw;
+    padding:50px;
+    margin:0 auto 100px auto;
+    border-radius:10px;
+    overflow-y:scroll;
+}
+.account .account-content .edit-address .form-content form .close{
+    font-size:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+.account .account-content .edit-address .form-content form .head-three{
+    margin-bottom:20px;
+}
+
+
+.account .account-content .edit-address-popup .background{
+    top:0;
+    transition:.5s ease-in-out all;
+}
+.account .account-content .edit-address-popup .form-content{
+    top:0;
+    transition:.5s ease-in-out all;
+}
 /* end content */
 
 /* break */
@@ -296,6 +351,9 @@
         width:70px;
         height:70px;
         border-radius:70px;
+    }
+    .account .account-content .edit-address .form-content form{
+        width:40vw;
     }
 }
 
@@ -384,5 +442,17 @@
     }
     .account .account-content section .double-item-two{
         display:block;
+    }
+    .account .account-content .edit-address .form-content{
+        text-align:center;
+        position:fixed;
+        z-index:100000;
+        padding:0;
+    }
+    .account .account-content .edit-address .form-content form{
+        width:100vw;
+        padding:50px 50px 100px 50px;
+        margin:0 auto;
+        border-radius: 0;
     }
 }

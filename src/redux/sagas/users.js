@@ -12,7 +12,9 @@ import {
   EDIT_ADDRESS,
   GET_ADDRESS,
   DELETE_ADDRESS,
-  ADD_CART
+  ADD_CART,
+  GET_CART,
+  GET_FAVOURITE
 } from "../constants/user";
 import safeSaga from "../../helpers/safeSaga";
 import { successHandler } from "../../helpers/apiRequests";
@@ -63,6 +65,18 @@ function* addCart({ payload }) {
   const response = yield call([api, "post"], userRequest.ADD_CART, payload);
 
   yield call(successHandler, response, ADD_CART.success, true);
+}
+
+function* getCart() {
+  const response = yield call([api, "get"], userRequest.GET_CART);
+
+  yield call(successHandler, response, GET_CART.success);
+}
+
+function* getFavourite() {
+  const response = yield call([api, "get"], userRequest.GET_FAVOURITE);
+
+  yield call(successHandler, response, GET_FAVOURITE.success);
 }
 
 function* getMembers() {
@@ -127,6 +141,14 @@ export default function* usersSaga() {
   yield takeLatest(
     ADD_CART.request,
     safeSaga(addCart, ADD_CART.error)
+  );
+  yield takeLatest(
+    GET_CART.request,
+    safeSaga(getCart, GET_CART.error)
+  );
+  yield takeLatest(
+    GET_FAVOURITE.request,
+    safeSaga(getFavourite, GET_FAVOURITE.error)
   );
   yield takeLatest(
     GET_TEAM_MEMBERS.request,

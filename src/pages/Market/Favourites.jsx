@@ -1,26 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { getFavourite } from "../../redux/actions/user";
 import {Link} from 'react-router-dom'
 // styling
 import './style/favourites.css'
 // widgets
-import RangeInput from '../../widgets/RangeInput'
-import SelectInput from '../../widgets/SelectInput'
-import ButtonTwo from '../../widgets/ButtonTwo'
-// icons
-import delete_icon from '../../icons/delete.svg'
+import Navigation from '../../widgets/Navigation'
+import Footer from '../../widgets/Footer'
+import FavouritesItem from './Components/FavouritesItem'
 // images
 import sachet_water from '../../images/sachet-water.png'
 // data
-const type = [
-    {
-        "name": "Pack",
-        "value": "pack"
-    },
-    {
-        "name": "Single",
-        "value": "single"
-    }
-]
 const products = [
     {
         "image": sachet_water,
@@ -45,40 +35,31 @@ const products = [
 ]
 
 const Saved = () => {
-    return (
+    const dispatch = useDispatch();
+    const cart_details = useSelector(state => state.user.getCart.data)
+    const carts = useSelector(state => state.user.getFavourite.data.data)
+
+    useEffect(() => {
+      dispatch(getFavourite());
+    }, [dispatch]);
+
+    console.log(carts)
+
+    return <>
+        <Navigation />
         <div className="favourites">
             <div className="head">Saved Products</div>
             <div className="item-container">
-                {products.map(item => {
-                    return  <div className="card" key={item.value}>
-                                <div className="image" style={{
-                                    backgroundImage: `url(${item.image})`, 
-                                    backgroundSize:`cover`
-                                }}>
-                                    <img src={delete_icon} alt="delete" />
-                                </div>
-                                <Link className="link" to='/product-details'>
-                                    <div className="text">{item.value}</div>
-                                    <div className="price">₦{item.price}.00</div>
-                                </Link>
-                                <SelectInput 
-                                    options={type}
-                                    styling="full-input"
-                                />
-                                <RangeInput 
-                                    options={type}
-                                    styling="full-input"
-                                />
-                                <ButtonTwo
-                                    text="Show Less"
-                                    type="submit"
-                                    styling="bg-primary full-input"
-                                />
-                            </div>
-                })}
+                {carts === undefined 
+                    ? <div className="cards">Please wait...</div> 
+                    : carts.map(item => {
+                        return  <FavouritesItem value={item.product} key={item.id} />
+                    })
+                }
             </div>
         </div>
-    )
+        <Footer />
+    </>
 }
 
 export default Saved

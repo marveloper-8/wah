@@ -13,8 +13,6 @@ const ExistingAddress = e => {
       dispatch(getAddress());
     }, [dispatch]);
 
-    console.log(addresses)
-
     return <>
         <section className="double-section">
             <span className="head-two">Address Details</span>

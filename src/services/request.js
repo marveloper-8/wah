@@ -24,6 +24,8 @@ export const userRequest = {
   GET_ADDRESS: `/user/display-delivery-address`,
   DELETE_ADDRESS: `/user/delivery-address/delete`,
   ADD_CART: `/cart/process`,
+  GET_CART: `/cart/items`,
+  GET_FAVOURITE: `/product/view-favorite`,
 };
 export const OrganisationRequest = {
   DELETE_SELECTED: "/sync/podio/permanent_delete/items",

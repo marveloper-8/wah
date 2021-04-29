@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { addCart } from "../../redux/actions/user";
+import { addCart, getCart } from "../../redux/actions/user";
 import Swal from 'sweetalert2'
 // styling
 import './style/details.css'
@@ -157,6 +157,7 @@ const Details = () => {
                 timer: 3000
             })
             setLoading2(false)
+            dispatch(getCart());
             // window.location.reload()
         } else if(loading2 && !add_cart.success && !add_cart.processing){
             setLoading(false)
@@ -169,8 +170,9 @@ const Details = () => {
                 timer: 3000
             })
             setLoading2(false)
+            dispatch(getCart());
         } 
-    }, [add_cart, loading2])
+    }, [add_cart, loading2, dispatch])
 
     return <>
         <Navigation />
@@ -216,14 +218,14 @@ const Details = () => {
                             />
                             <div className="actions">
                                 <div>
-                                    <a onClick={cartFunction}>
+                                    <span onClick={cartFunction}>
                                         <ButtonTwo
                                             text={loading ? "Please Wait..." : "Add to Cart"}
                                             type="submit"
                                             styling="bg-primary full-input"
                                             disabled={loading ? true : false}
                                         />
-                                    </a>
+                                    </span>
                                 </div>
                                 <div className="favourite">
                                     <img src={favourite} alt="favourite" />

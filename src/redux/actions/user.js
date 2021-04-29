@@ -39,6 +39,12 @@ export const addCart = (payload) => ({
   type: user.ADD_CART.request,
   payload,
 });
+export const getCart = () => ({
+  type: user.GET_CART.request,
+});
+export const getFavourite = () => ({
+  type: user.GET_FAVOURITE.request,
+});
 export const getTeamMembers = () => ({
   type: user.GET_TEAM_MEMBERS.request,
 });

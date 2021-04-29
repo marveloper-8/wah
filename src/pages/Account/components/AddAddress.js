@@ -129,7 +129,7 @@ const AddAddress = props => {
             />
             <TextInput
                 label="Zip Code"
-                type="number"
+                type="text"
                 styling="bg-white"
                 label_size={16}
                 name="zip_code"
