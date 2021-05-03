@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import { addCart, getCart } from "../../../redux/actions/user";
+import { updateCart, getCart } from "../../../redux/actions/user";
 import {useDispatch, useSelector} from 'react-redux'
+import Swal from 'sweetalert2'
 // widgets
 import RangeInput from '../../../widgets/RangeInput'
 import SelectInput from '../../../widgets/SelectInput'
+import ButtonTwo from '../../../widgets/ButtonTwo'
 import ButtonIconTwo from '../../../widgets/ButtonIconTwo'
 // icons
 import favourite from '../../../icons/favourite-blue.svg'
@@ -22,30 +24,47 @@ const type = [
 
 const Carts = e => {
     const dispatch = useDispatch();
-    const add_cart = useSelector(state => state.user.addCart)
-
-    const [loading2, setLoading2] = useState(false)
     const [quantity, setQuantity] = useState(e.value.quantity)
+    const id = e.value.product.id
     
     const cartFunction = () => {
         const infoData = {
-            product_id: `${e.value.quantity}`,
+            product_id: `${id}`,
             quantity: `${quantity}`
         };
-        dispatch(addCart(infoData))
-        setLoading2(true)
+        dispatch(updateCart(infoData))
     }
+    console.log(e.value.product.id, quantity)
     
-    useEffect(() => {
-        if(loading2 && add_cart.success && !add_cart.processing){
-            setLoading2(false)
-            dispatch(getCart());
-            // window.location.reload()
-        } else if(loading2 && !add_cart.success && !add_cart.processing){
-            setLoading2(false)
-            dispatch(getCart());
-        } 
-    }, [add_cart, loading2, dispatch])
+    // useEffect(() => {
+    //     if(loading2 && update_cart.success && !update_cart.processing){
+    //         setLoading(false)
+    //         Swal.fire({
+    //             position: 'top-end',
+    //             icon: 'success',
+    //             title: 'Success!',
+    //             text: `${e.value.product.name} updated successfully`,
+    //             showConfirmButton: false,
+    //             timer: 3000
+    //         })
+    //         setLoading2(false)
+    //         dispatch(getCart());
+    //         // window.location.reload()
+    //     } else if(loading2 && !update_cart.success && !update_cart.processing){
+    //         setLoading(false)
+    //         Swal.fire({
+    //             position: 'top-end',
+    //             icon: 'error',
+    //             title: 'Error!',
+    //             text: `${e.value.product.name} update unsuccessful`,
+    //             showConfirmButton: false,
+    //             timer: 3000
+    //         })
+    //         setLoading2(false)
+    //         dispatch(getCart());
+    //     } 
+    // }, [update_cart, loading2, dispatch, e])
+
     return <div className="card" key={e.value.id}>
         <div className="image" style={{
             backgroundImage: `url(${e.value.product.images[0].image})`, 
@@ -65,10 +84,10 @@ const Carts = e => {
                 styling="half-input"
                 value={quantity}
                 decrement={quantity > 1 ? () => {
-                    setQuantity(quantity - 1) 
+                    setQuantity(quantity - 1)
                     cartFunction()
                 } : ''}
-                increment={() => {
+                increment={() =>  {
                     setQuantity(quantity + 1)
                     cartFunction()
                 }}

@@ -93,7 +93,7 @@ const Home = () => {
                         <Link className="link" to='/market'>
                             <span className="market">Marketplace</span>
                         </Link>
-                        <Link className="link" to='/authentication'>
+                        <Link className="link" to='/account'>
                             <img src={user} alt="user" />
                         </Link>
                         <img src={favourite} alt="favourite" />

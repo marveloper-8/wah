@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
 // styling
 import './style/market.css'
 // widgets
@@ -7,7 +6,7 @@ import CheckboxInput from '../../widgets/CheckboxInput'
 import TextInputNaira from '../../widgets/TextInputNaira'
 import Navigation from '../../widgets/Navigation'
 import Footer from '../../widgets/Footer'
-import favourite from '../../icons/favourite-two.svg'
+import MarketItem from './Components/MarketItem'
 // images
 const product_filter = [
     {
@@ -82,22 +81,10 @@ const Market = e => {
             <div className="products">
                 <h5>All Products</h5>
                 <div className="item-container">
-                    {products.map(item => {
-                        return <div className="card" key={item.id}>
-                            <div className="image" style={{
-                                backgroundImage: `url(${item.images[0].image})`, 
-                                backgroundSize:`cover`
-                            }}>
-                                <img 
-                                    src={favourite} 
-                                    alt="favourite" 
-                                />
-                            </div>
-                            <Link className="link" to={`/product-details/${item.id}`}>
-                                <div className="text">{item.category.name}</div>
-                                <div className="price">{item.price}</div>
-                            </Link>
-                        </div>
+                    {products.length < 1 
+                        ? "There are currently no products for sale."
+                        : products.map(item => {
+                        return <MarketItem value={item} />
                     })}
                 </div>
             </div>

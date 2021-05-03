@@ -24,7 +24,9 @@ export const userRequest = {
   GET_ADDRESS: `/user/display-delivery-address`,
   DELETE_ADDRESS: `/user/delivery-address/delete`,
   ADD_CART: `/cart/process`,
+  UPDATE_CART: `/cart/update-item-quantity`,
   GET_CART: `/cart/items`,
+  ADD_FAVOURITE: `/product/favorite`,
   GET_FAVOURITE: `/product/view-favorite`,
 };
 export const OrganisationRequest = {

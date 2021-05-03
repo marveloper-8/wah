@@ -10,6 +10,7 @@ import './style.css'
 // widgets
 import TextInput from '../../widgets/TextInput'
 import Button from '../../widgets/Button'
+import GoogleLogin from './Components/GoogleLogin'
 // icons
 import logo from '../../icons/logo.svg'
 import facebook from '../../icons/facebook.svg'
@@ -81,7 +82,7 @@ const Login = props => {
             position: 'top-end',
             icon: 'error',
             title: 'Error!',
-            text: 'Sign in unsuccessful',
+            text: 'Sign in failed',
             showConfirmButton: false,
             timer: 3000
         })
@@ -151,10 +152,9 @@ const Login = props => {
 
                 <div className="third-party">
                     {third_party.map(item => {
-                        return <div className="item" key={item.text}>
-                            <img src={item.image} alt={item.text} />
-                            <span>Sign in with {item.text}</span>
-                        </div>
+                        return <GoogleLogin 
+                                value={item} 
+                            />
                     })}
                 </div>
             </form>

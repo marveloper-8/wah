@@ -18,7 +18,9 @@ import {
   GET_ADDRESS,
   DELETE_ADDRESS,
   ADD_CART,
+  UPDATE_CART,
   GET_CART,
+  ADD_FAVOURITE,
   GET_FAVOURITE
 } from "../constants/user";
 
@@ -35,7 +37,9 @@ const INITIAL_STATE = {
   deleteAddress: defaultSingleObjectArrayState,
   getAddress: defaultSingleObjectArrayState,
   addCart: defaultSingleObjectArrayState,
+  updateCart: defaultSingleObjectArrayState,
   getCart: defaultSingleObjectArrayState,
+  addFavourite: defaultSingleObjectArrayState,
   getFavourite: defaultSingleObjectArrayState,
 };
 const defaultPayload = {
@@ -97,10 +101,18 @@ const userReducer = (
     case ADD_CART.success:
     case ADD_CART.error:
       return handleReduxAction(state, payload, status, "addCart");
+    case UPDATE_CART.request:
+    case UPDATE_CART.success:
+    case UPDATE_CART.error:
+      return handleReduxAction(state, payload, status, "updateCart");
     case GET_CART.request:
     case GET_CART.success:
     case GET_CART.error:
       return handleReduxAction(state, payload, status, "getCart");
+    case ADD_FAVOURITE.request:
+    case ADD_FAVOURITE.success:
+    case ADD_FAVOURITE.error:
+      return handleReduxAction(state, payload, status, "addFavourite");
     case GET_FAVOURITE.request:
     case GET_FAVOURITE.success:
     case GET_FAVOURITE.error:
