@@ -357,7 +357,7 @@ const Details = () => {
                                     }}>
                                         <img src={favourite} alt="favourite" />
                                     </div>
-                                    <Link className="link" to='/product-details'>
+                                    <Link className="link" to={`/product-details/${item.id}`}>
                                         <div className="text">{item.category.name}</div>
                                         <div className="price">{item.price}</div>
                                     </Link>

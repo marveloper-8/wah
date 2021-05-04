@@ -53,6 +53,9 @@ export const addFavourite = (payload) => ({
 export const getFavourite = () => ({
   type: user.GET_FAVOURITE.request,
 });
+export const getBank = () => ({
+  type: user.GET_BANK.request,
+});
 export const getTeamMembers = () => ({
   type: user.GET_TEAM_MEMBERS.request,
 });

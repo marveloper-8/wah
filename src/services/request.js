@@ -28,6 +28,7 @@ export const userRequest = {
   GET_CART: `/cart/items`,
   ADD_FAVOURITE: `/product/favorite`,
   GET_FAVOURITE: `/product/view-favorite`,
+  GET_BANK: `/banks/mine`,
 };
 export const OrganisationRequest = {
   DELETE_SELECTED: "/sync/podio/permanent_delete/items",

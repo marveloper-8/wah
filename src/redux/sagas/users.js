@@ -16,7 +16,8 @@ import {
   UPDATE_CART,
   GET_CART,
   ADD_FAVOURITE,
-  GET_FAVOURITE
+  GET_FAVOURITE,
+  GET_BANK
 } from "../constants/user";
 import safeSaga from "../../helpers/safeSaga";
 import { successHandler } from "../../helpers/apiRequests";
@@ -91,6 +92,12 @@ function* getFavourite() {
   const response = yield call([api, "get"], userRequest.GET_FAVOURITE);
 
   yield call(successHandler, response, GET_FAVOURITE.success);
+}
+
+function* getBank() {
+  const response = yield call([api, "get"], userRequest.GET_BANK);
+
+  yield call(successHandler, response, GET_BANK.success);
 }
 
 function* getMembers() {
@@ -171,6 +178,10 @@ export default function* usersSaga() {
   yield takeLatest(
     GET_FAVOURITE.request,
     safeSaga(getFavourite, GET_FAVOURITE.error)
+  );
+  yield takeLatest(
+    GET_BANK.request,
+    safeSaga(getBank, GET_BANK.error)
   );
   yield takeLatest(
     GET_TEAM_MEMBERS.request,

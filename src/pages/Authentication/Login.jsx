@@ -10,7 +10,7 @@ import './style.css'
 // widgets
 import TextInput from '../../widgets/TextInput'
 import Button from '../../widgets/Button'
-import GoogleLogin from './Components/GoogleLogin'
+import SocialButton from './Components/SocialButton'
 // icons
 import logo from '../../icons/logo.svg'
 import facebook from '../../icons/facebook.svg'
@@ -152,7 +152,7 @@ const Login = props => {
 
                 <div className="third-party">
                     {third_party.map(item => {
-                        return <GoogleLogin 
+                        return <SocialButton 
                                 value={item} 
                             />
                     })}

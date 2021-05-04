@@ -36,6 +36,7 @@ const PaymentInfo = e => {
                         </div>
                         <div>
                             <div className="card-details-item">Master Card Debit (5432)</div>
+                            <div className="card-details-item">02 / 2023</div>
                             <div className="card-details-item">{bank_details.bank_account_name}</div>
                         </div>
                     </div>

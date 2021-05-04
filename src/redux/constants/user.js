@@ -14,6 +14,7 @@ export const UPDATE_CART = createActionType("UPDATE_CART");
 export const GET_CART = createActionType("GET_CART");
 export const ADD_FAVOURITE = createActionType("ADD_FAVOURITE");
 export const GET_FAVOURITE = createActionType("GET_FAVOURITE");
+export const GET_BANK = createActionType("GET_BANK");
 export const GET_TEAM_MEMBERS = createActionType("GET_TEAM_MEMBERS");
 export const GET_ME = createActionType("GET_ME");
 export const DELETE_PODIO = createActionType("DELETE_PODIO");

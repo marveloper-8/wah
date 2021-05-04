@@ -21,7 +21,8 @@ import {
   UPDATE_CART,
   GET_CART,
   ADD_FAVOURITE,
-  GET_FAVOURITE
+  GET_FAVOURITE,
+  GET_BANK
 } from "../constants/user";
 
 const INITIAL_STATE = {
@@ -41,6 +42,7 @@ const INITIAL_STATE = {
   getCart: defaultSingleObjectArrayState,
   addFavourite: defaultSingleObjectArrayState,
   getFavourite: defaultSingleObjectArrayState,
+  getBank: defaultSingleObjectArrayState,
 };
 const defaultPayload = {
   data: [],
@@ -117,6 +119,10 @@ const userReducer = (
     case GET_FAVOURITE.success:
     case GET_FAVOURITE.error:
       return handleReduxAction(state, payload, status, "getFavourite");
+    case GET_BANK.request:
+    case GET_BANK.success:
+    case GET_BANK.error:
+      return handleReduxAction(state, payload, status, "getBank");
     case GET_TEAM_MEMBERS.request:
     case GET_TEAM_MEMBERS.success:
     case GET_TEAM_MEMBERS.error:

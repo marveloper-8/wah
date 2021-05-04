@@ -7,19 +7,13 @@ import PaymentNull from './components/PaymentNull'
 const Payment = () => {
     // functions
     const [payment, setPayment] = useState({
-        payment_info: false,
+        payment_info: true,
         payment_add: false,
-        payment_null: true
+        // payment_null: true
     })
 
     const Component = () => {
-        if(payment.payment_null){
-            return <PaymentNull function={() => setPayment({
-                payment_add: true,
-                payment_info: false,
-                payment_null: false
-            })} />
-        }else if(payment.payment_add){
+        if(payment.payment_add){
             return <PaymentAdd function={() => setPayment({
                 payment_add: false,
                 payment_info: true,
